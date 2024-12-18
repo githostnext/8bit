@@ -1,0 +1,15 @@
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+
+    max-width: calc(var(--container-size) + 15px * 2);
+    width: 100%;
+
+    &--lg {
+        max-width: calc(1815px + 15px * 2);
+    }
+}
+
+.purple-color {
+    color: #6563ed;
+}

@@ -1,0 +1,835 @@
+@import 'reset', 'fonts', 'media', 'variables', 'globals', 'utils';
+
+.wrapper {
+    overflow-x: hidden;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    width: 100%;
+
+    padding: 20px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+
+    @include tablet {
+        padding: 10px 20px;
+    }
+}
+
+.logo {
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &__image {}
+
+    &__text {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 42px;
+        color: #000;
+
+        @include tablet {
+            font-size: 34px;
+        }
+    }
+}
+
+.nav {
+
+    @include tablet {
+        display: none;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    &__item {}
+
+    &__link {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 26px;
+        color: #000;
+    }
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &__item {}
+
+    &__link {}
+
+    &__icon {
+        @include tablet {
+            max-width: 30px;
+        }
+    }
+}
+
+.main {}
+
+.section {
+
+    &--hero {
+        position: relative;
+
+        padding-top: 120px;
+
+        background-image: url('../img/hero-bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 100%;
+
+        &::after {
+            content: '';
+
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            height: 200px;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        & .clouds {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translate(-50%);
+            z-index: 5;
+        }
+
+        & .section {
+            &__title {
+                font-family: var(--font-family);
+                font-weight: 500;
+                font-size: 188px;
+                color: #000;
+
+                animation: flickerAnimation .7s infinite;
+
+                @include tablet {
+                    font-size: 80px;
+                    text-align: center;
+                    max-width: 100%;
+                }
+            }
+
+            &__wrapper {
+                display: flex;
+                align-items: start;
+                justify-content: space-between;
+
+                @include tablet {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            &__start {
+                margin-top: 50px;
+            }
+
+            &__image {
+                position: relative;
+                z-index: 7;
+
+                animation: sonic-hero 2s infinite;
+
+                @include tablet {
+                    margin-top: 50px;
+                    max-width: 300px;
+                }
+            }
+
+            &__description {
+                max-width: 780px;
+
+                @include tablet {
+                    text-align: center;
+                    font-size: 36px;
+                }
+            }
+
+            &__actions {
+                margin-top: 50px;
+
+                display: flex;
+                gap: 20px;
+
+                @include tablet {
+                    flex-direction: column;
+                    align-items: center;
+
+                    & .section__link {
+                        animation: none !important;
+                    }
+                }
+
+                & .section__link:nth-child(1) {
+                    animation: sonic-hero 1s infinite;
+                }
+
+                & .section__link:nth-child(2) {
+                    animation: sonic-hero 1s .5s infinite;
+                }
+            }
+        }
+    }
+
+    &--join {
+        padding: 70px 15px;
+        padding-top: 100px;
+        position: relative;
+        z-index: 6;
+
+        & .sonic-left {
+            position: absolute;
+            left: -150px;
+            top: -180px;
+
+            animation: join-left 1s infinite;
+
+            @include tablet {
+                max-width: 200px;
+                top: -0px;
+                left: -70px;
+            }
+        }
+
+        & .sonic-right {
+            position: absolute;
+            right: -400px;
+            top: 100px;
+
+            animation: join-right 1s infinite;
+        }
+
+        & .section {
+            &__wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 70px;
+            }
+
+            &__content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 50px;
+
+                @include tablet {
+                    flex-direction: column;
+                    gap: 20px;
+                }
+            }
+
+            &__description {
+                max-width: 910px;
+
+                @include tablet {
+                    font-size: 30px;
+                    text-align: center;
+                }
+            }
+
+            &__link {
+                padding: 14px 60px;
+                font-size: 107px;
+
+                animation: join-left 1s infinite .5s;
+
+                @include tablet {
+                    padding: 10px 30px;
+                    font-size: 40px;
+                    position: relative;
+                    z-index: 4;
+                }
+            }
+        }
+
+        & .address {
+            margin-top: 40px;
+            width: 100%;
+
+            display: flex;
+
+            border: 6px solid #6563ed;
+
+            @include tablet {
+                flex-direction: column;
+            }
+
+            &__input {
+                width: 100%;
+
+                font-family: var(--font-family);
+                font-weight: 500;
+                font-size: 59px;
+                text-align: center;
+                color: #101919;
+
+                outline: none;
+                cursor: default;
+
+                text-align: left;
+                padding-left: 50px;
+
+                @include tablet {
+                    font-size: 26px;
+                    text-align: center;
+                    padding: 10px;
+                }
+            }
+
+            &__button {
+                position: relative;
+                padding: 20px;
+
+                max-width: 310px;
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+
+                font-family: var(--font-family);
+                font-weight: 500;
+                font-size: 59px;
+                text-align: center;
+                color: #fff;
+
+                background-color: #6563ed;
+                cursor: pointer;
+
+                @include tablet {
+                    padding: 10px 30px;
+                    max-width: 100%;
+                    font-size: 30px;
+
+                    & svg {
+                        max-width: 20px;
+                    }
+                }
+
+                &::before {
+                    content: url('../img/address-sonic.png');
+
+                    position: absolute;
+                    top: -170px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: -1;
+
+                    @include tablet {
+                        transform: scale(0.4);
+                        top: -175px;
+                    }
+                }
+            }
+        }
+    }
+
+    &--about {
+        padding: 70px 15px;
+
+        & .section {
+            &__wrapper {
+                position: relative;
+
+                display: flex;
+                justify-content: space-between;
+
+                @include tablet {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            &__content {
+                max-width: 930px;
+
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                @include tablet {
+                    align-items: center;
+                }
+            }
+
+            &__image {
+                animation: join-left 1s infinite;
+
+                @include tablet {
+                    max-width: 200px;
+                    margin-bottom: 20px;
+                }
+            }
+
+            &__description {
+                @include tablet {
+                    font-size: 30px;
+                    text-align: center;
+                }
+            }
+        }
+
+        & .ring {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    &--buy {
+        position: relative;
+        padding: 70px 15px;
+
+        & .sonic-left {
+            position: absolute;
+            left: -480px;
+            top: -200px;
+
+            animation: join-right 1s infinite;
+        }
+
+        & .section {
+            &__wrapper {
+                position: relative;
+
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+
+                @include tablet {
+                    align-items: center;
+                }
+
+                & .ring {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+
+                    @include tablet {
+                        display: none;
+                    }
+                }
+            }
+
+            &__title {
+                text-align: center;
+            }
+        }
+
+        & .list {
+            display: flex;
+            gap: 65px;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            & .item {
+                max-width: 450px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+
+                &:nth-child(1) {
+                    animation: sonic-hero 1s infinite;
+
+                    & .item__title {
+                        margin-top: 15px;
+                    }
+                }
+
+                &:nth-child(2) {
+                    animation: sonic-hero 1s .2s infinite;
+                }
+
+                &:nth-child(3) {
+                    animation: sonic-hero 1s .5s infinite;
+
+                    & .item__title {
+                        margin-top: 35px;
+                    }
+                }
+
+                &__image {
+                    max-width: fit-content;
+                }
+
+                &__title {
+                    font-family: var(--font-family);
+                    font-weight: 500;
+                    font-size: 72px;
+                    color: #6563ed;
+
+                    @include tablet {
+                        font-size: 40px;
+                    }
+                }
+
+                &__text {
+                    font-family: var(--font-family);
+                    font-weight: 500;
+                    font-size: 40px;
+                    text-align: center;
+                    color: #000;
+
+                    @include tablet {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    &--map {
+        padding: 70px 15px;
+        position: relative;
+        z-index: 2;
+
+        & .sonic-right {
+            position: absolute;
+            right: -220px;
+            bottom: -350px;
+        }
+
+        & .section {
+            &__wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+
+            &__title {
+                text-align: center;
+            }
+        }
+
+        & .list {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+
+            @include tablet {
+                flex-direction: column;
+            }
+
+            & .item {
+                padding: 35px;
+
+                max-width: 470px;
+                width: 100%;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+
+                border: 6px solid #000;
+                background: #fff;
+
+                &:nth-child(1) {
+                    animation: sonic-hero 1s infinite;
+                }
+
+                &:nth-child(2) {
+                    animation: sonic-hero 1s .2s infinite;
+                }
+
+                &:nth-child(3) {
+                    animation: sonic-hero 1s .5s infinite;
+                }
+
+                @include tablet {
+                    padding: 15px;
+                    gap: 20px;
+                }
+
+                &__title {
+                    width: 100%;
+                    padding: 15px;
+                    background: #6563ed;
+                    font-family: var(--font-family);
+                    font-weight: 500;
+                    font-size: 79px;
+                    color: #fff;
+                    text-align: center;
+
+                    @include tablet {
+                        font-size: 40px;
+                    }
+                }
+
+                &:last-child {
+                    position: relative;
+
+                    &::before {
+                        content: url('../img/sonic-map-step.png');
+
+                        position: absolute;
+                        top: -150px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        z-index: -1;
+
+                        @include tablet {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .list-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            &__item {
+                position: relative;
+
+                font-family: var(--font-family);
+                font-weight: 500;
+                font-size: 49px;
+                color: #000;
+
+                list-style-position: inside;
+
+                @include tablet {
+                    font-size: 24px;
+                }
+
+                &::marker {
+                    content: url('../img/marker.svg');
+
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                }
+
+                @include tablet {
+                    &::marker {
+                        content: '';
+                    }
+                }
+            }
+        }
+    }
+
+    &__wrapper {}
+
+    &__start {}
+
+    &__title {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 120px;
+        color: #6563ed;
+
+        @include tablet {
+            font-size: 46px;
+            max-width: 260px;
+            text-align: center;
+        }
+    }
+
+    &__description {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 53px;
+        color: #000;
+    }
+
+    &__actions {}
+
+    &__link {
+        padding: 19px 88px;
+
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 53px;
+        color: #fff;
+
+        background: #6563ed;
+        border: 6px solid #6563ed;
+
+        &--transparent {
+            background-color: transparent;
+            color: #000;
+
+            border: 6px solid #101a1a;
+        }
+
+        @include tablet {
+            padding: 10px 30px;
+            font-size: 36px;
+        }
+    }
+
+    &__image {}
+}
+
+.footer {
+    min-height: 1200px;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url('../img/footer-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+
+    overflow: hidden;
+
+    & .ring-cloud {
+        position: absolute;
+        right: 100px;
+        top: 380px;
+
+        animation: footer-cloud 2s infinite linear;
+
+        @include tablet {
+            max-width: 150px;
+            display: none;
+        }
+    }
+
+    & .ring-left {
+        position: absolute;
+        left: -200px;
+        top: 200px;
+
+        animation: join-right 1s infinite;
+
+        @include tablet {
+            left: -50px;
+            max-width: 150px;
+        }
+    }
+
+    & .ring-right {
+        position: absolute;
+        right: -450px;
+        bottom: -250px;
+
+        animation: join-right 1s .2s infinite;
+
+        @include tablet {
+            right: -120px;
+            bottom: -70px;
+            max-width: 300px;
+        }
+    }
+
+    & .footer__image {
+        animation: sonic-hero 1s infinite;
+
+        @include tablet {
+            max-width: 400px;
+            margin-right: -50px;
+        }
+    }
+}
+
+a {
+    transition: .2s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+
+.open {
+    height: 100dvh;
+    width: 100vw;
+    position: fixed;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: url('../img/open-bg.png') #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+
+    &__button {
+        position: relative;
+        padding: 20px 100px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 81px;
+        color: #fff;
+        cursor: pointer;
+
+        transition: .3s;
+
+        box-shadow: 1px 9px 20px 0 rgba(0, 0, 0, 0.1), 2px 36px 36px 0 rgba(0, 0, 0, 0.09), 5px 81px 48px 0 rgba(0, 0, 0, 0.05), 10px 143px 58px 0 rgba(0, 0, 0, 0.01), 16px 224px 63px 0 rgba(0, 0, 0, 0);
+        background: #6563ed;
+
+        animation: sonic-hero 1s infinite;
+
+        &::before {
+            content: url('../img/open-sonic.png');
+
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            animation: join-right .6s infinite;
+            animation-play-state: inherit;
+        }
+
+        &:hover {
+            padding: 20px 130px;
+            animation-play-state: paused;
+        }
+    }
+}
+
+@import 'animations';
